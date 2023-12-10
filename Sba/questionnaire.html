@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ch">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>問卷調查</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<style type="text/css">
+	<!--
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	body {
+	  font: 100% 細明體, 新細明體;
+	  background: #FFFFFF;
+	  margin: 0; /* 比較好的做法是將 Body 元素的邊界與欄位間隔調整為零，以處理不同的瀏覽器預設值 */
+	  padding: 0;
+	  text-align: center; /* 這樣會讓容器在 IE 5* 瀏覽器內置中對齊。然後，文字會在 #container 選取器中設定為靠左對齊預設值 */
+	  color: #000000;
+	}
+	.oneColLiqCtrHdr #container {
+	  width: 100%;  /* 這樣將會建立為 80% 瀏覽器寬度的容器 */
+	  background: #FFFFFF;
+	  margin: 0 auto; /* 自動邊界 (搭配寬度) 會讓頁面置中對齊 */
+	  border: 0px solid #000000;
+	  text-align: left; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
+	}
+	.oneColLiqCtrHdr #header {
+	  background: #FFFFFF; 
+	  padding: 0 10px 0 20px;  /* 這個欄位間隔符合下面顯示的 Div 中，元素的靠左對齊。如果在 #header 中使用影像而非文字，您可能會想要移除欄位間隔。 */
+		height: 4vw;
+	}
+	.oneColLiqCtrHdr #header h1 {
+	  margin: 0; /* 將 #header Div 中最後一個元素的邊界調整為零可避免邊界收合 (Div 之間出現的空間，無法解釋)。如果 Div 的周圍具有邊框，這就不是必要動作，因為該項設定也會避免邊界收合 */
+	  padding: 10px 0; /* 使用欄位間隔而非邊界便可讓元素遠離 Div 的邊緣 */
+	}
+	.button_box_fontsize {
+    position: absolute;
+    top: 5vw; right: 5vw;
+    height: 5vw;
+    width: 20vw;
+}
+.button_box_fontsize_btn {
+    height: 5vw;
+    width: 5vw;
+    float: right;
+}
+	.oneColLiqCtrHdr #mainContent {
+	  padding: 0 20px; /* 請記住，欄位間隔就是 Div 方塊內部的空間，而邊界就是 Div 方塊外部的空間 */
+	  background: #FFFFFF;
+	}
+	.table_set_one {
+		border: none;
+	  width: 80%;
+	}
+	.oneColLiqCtrHdr #footer { 
+	  padding: 0 10px; /* 這個欄位間隔符合上面顯示的 Div 中，元素的靠左對齊。 */
+	  background:#DDDDDD;
+	  width: 100%;
+	} 
+	.oneColLiqCtrHdr #footer p {
+	  margin: 0; /* 將頁尾中第一個元素的邊界調整為零可避免邊界收合的可能性 (Div 之間出現的空間) */
+	  padding: 10px 0; /* 這個元素的欄位間隔將會建立空間，就如同邊界一樣，但是沒有邊界收合的問題 */
+	}
+	.gradient-custom {
+	/* fallback for old browsers */
+	background: #6a11cb;
+	
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+	
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+	}
+	@media screen and (max-device-width: 620px) {
+	  /* For mobile phones: */
+	  .oneColLiqCtrHdr #container, .oneColLiqCtrHdr #header, .oneColLiqCtrHdr #footer, .oneColLiqCtrHdr #mainContent {
+		width: 100%;
+	  }
+	}
+	-->
+	</style>
+	<audio id="myAudio">
+  <source src="source/Busy_City-TrackTribe.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+	<script>
+    function darkmode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="daymode()" class="button_box_fontsize_btn">Day Mode </button>';
+        document.querySelector('body').style.color = "#FFFFFF";
+        document.querySelector('body').style.background = "#000000";
+        document.getElementById('container').style.background = "#000000";
+        document.getElementById('mainContent').style.background = "#000000";
+        document.getElementById('header').style.background = "#000000";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#808080"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function daymode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode </button>';
+        document.querySelector('body').style.color = "#000000";
+        document.querySelector('body').style.background = "#FFFFFF";
+        document.getElementById('container').style.background = "#FFFFFF";
+        document.getElementById('mainContent').style.background = "#FFFFFF";
+        document.getElementById('header').style.background = "#FFFFFF";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#f0f0f0"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function increaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize + 2) + 'px';
+    }
+    function decreaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize - 2) + 'px';
+    }
+
+	var x = document.getElementById("myAudio"); 
+    function playAudio() { 
+        x.play(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/pause.svg" width="20px" height="20px" onclick="pauseAudio()" alt="暫停音樂"></button>';
+    } 
+
+    function pauseAudio() { 
+        x.pause(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()" alt="播放音樂"></button>';
+    } 
+</script>
+</head>
+
+<body class="oneColLiqCtrHdr">
+
+<div id="container">
+  <div id="header">
+<h1>意見收集
+	<div class="button_box_fontsize">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Decrease_font.svg" width="20px" height="20px" onclick="decreaseFontSize()" alt="縮小字體">
+        </button>
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Increase_font.svg" width="20px" height="20px" onclick="increaseFontSize()" alt="放大字體">
+        </button>
+            <span id="modebutton">
+        <button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode
+            </button></span>
+			<span id="playmusic">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()" alt="播放音樂">
+            </button></span>
+    </div>
+	</h1>
+  <!-- end #header --></div>
+  <div id="mainContent">
+    <form id="form" action="#" method="post">
+		<fieldset>
+			<legend>問卷內容</legend>
+    <h3><label for="年齡">1.你的年齡為?</label></h3>
+    <select id="年齡">
+		<option>請輸入你的年齡</option>
+    	<option>6歲或以下</option>
+    	<option>7-12歲</option>
+    	<option>13-15歲</option>
+    	<option>16-18歲</option>
+    	<option>19-25歲</option>
+        <option>26-40歲</option>
+        <option>41-60歲</option>
+        <option>61歲或以上</option>
+	</select>
+	<h3>2.你的性别為?</h3>
+		<label>
+		 <input type="radio" value="男" name="性别">
+		 男</label>
+		 <br>
+		<label>
+		 <input type="radio" value="女" name="性别">
+		女</label>
+		<br>
+		 <label><input type="radio" value="不想透露" name="性别">
+		 不想透露</label>
+		<br>
+
+	<h3>3.你現時學歷為?</h3>
+    <label>
+		 <input type="radio" value="幼稚園或以下" name="學歷">
+		 幼稚園或以下</label>
+		<br>
+	<label>
+		 <input type="radio" value="小學" name="學歷">
+		 小學</label>
+		<br>
+	<label>
+		<input type="radio" value="中學" name="學歷">
+		 中學</label>
+		 <br>
+	<label>
+		 <input type="radio" value="大專或以上" name="學歷">
+		 大專或以上</label>
+		 <br>
+	<label>
+		<input type="radio" value="不想透露" name="學歷">
+		 不想透露</label>
+		 <br>
+		 
+    <h3><label for="滿意程度">4.你對這次開放日的滿意程度為?</label></h3>
+    <select id="滿意程度">
+		<option>請輸入你的滿意程度</option>
+    	<option>十分滿意</option>
+        <option>滿意</option>
+        <option>不滿意</option>
+        <option>十分不滿意</option>
+     </select>
+     <h3>5.你對學校有什麼期望</h3>
+       <label>
+         <input type="checkbox" name="學校期望" value="學生在畢業時，富有創意解難批判思維"/>
+         學生在畢業時，富有創意解難批判思維</label>
+       <br>
+       <label>
+         <input type="checkbox" name="學校期望" value="我希望學生可以好輕鬆地學習多些實地參觀和考察"/>
+         我希望學生可以好輕鬆地學習多些實地參觀和考察</label>
+       <br>
+       <label>
+         <input type="checkbox" name="學校期望" value="我希望學生能夠專注中文外，也會稍加注意學生的中文發音"/>
+         我希望學生能夠專注中文外，也會稍加注意學生的中文發音</label>
+       <br>
+       <label>
+         <input type="checkbox" name="學校期望" value="我希望老師能與同學有更緊密的關係和沒有等級之分"/>
+         我希望老師能與同學有更緊密的關係和沒有等級之分</label>
+       <br>
+       <label>
+         <input type="checkbox" name="學校期望" value="同學可以學到知識，將來可在工作上應用的知識"/>
+         同學可以學到知識，將來可在工作上應用的知識</label>
+       <br>
+       <label>
+       	 <input type="checkbox" name="學校期望" value="其他" onclick="disableinput()"/>其他<input type="text" id="其他" disabled/></label>
+	<h3>6.對來年開放日和學校的建議</h3>
+		<label>
+		 <textarea id="recommandation" maxlength="500" placeholder="在此輸入你的文字" style="height:5vw;width:20vw;"></textarea></label>
+			</fieldset>
+		 <p id="checkbutton">
+     <button onclick="check()" type="button" id="checkbtn">Check</button>
+
+    <p id="info">
+	</p>
+	<script>
+			var form = document.getElementById("form");
+      		var elements = form.elements;
+			var info = document.getElementById("info");
+			var other = document.getElementById("其他");
+			var recom = document.getElementById("recommandation");
+
+		function check() {
+			if (document.getElementById("年齡").value=="請輸入你的年齡") {
+				window.alert("請輸入你的年齡")
+			} else if (!(document.getElementsByName("性别")[0].checked || document.getElementsByName("性别")[1].checked || document.getElementsByName("性别")[2].checked)) {
+				window.alert("請輸入你的性别")
+			} else if (!(document.getElementsByName("學歷")[0].checked || document.getElementsByName("學歷")[1].checked || document.getElementsByName("學歷")[2].checked || document.getElementsByName("學歷")[3].checked || document.getElementsByName("學歷")[4].checked)) {
+				window.alert("請輸入你的學歷")
+			} else if (document.getElementById("滿意程度").value=="請輸入你的滿意程度") {
+				window.alert("請輸入你的滿意程度")
+			} else if (other.value==("") && other.disabled==false) {
+				window.alert("請輸入其他")
+			} else {
+			checkinfo()
+			}
+		}
+		
+		function checkinfo() {
+			info.innerHTML = "請檢查填入的資料是否正確<br>";
+			for (i=0; i<elements.length; i++) {
+				var element = elements[i];
+				if (element.checked) {
+					info.innerHTML += element.name + ":" + element.value + "<br>"
+				} else if (element.type=="select-one") {
+					info.innerHTML += element.id + ":" + element.value + "<br>"
+				}
+				if (element.checked && element.value=="其他") {
+					info.innerHTML += "其他:" + other.value + "<br>"
+				}
+				if (element.id == "recommandation" && element.value != "") {
+					info.innerHTML += "建議:" + recom.value + "<br>"
+				}
+			}
+			document.getElementById("info").innerHTML += '<button id="submitbtn" onclick="window.open(\'Appreciate.html\')">提交</button>';
+			document.getElementById("info").innerHTML += '<button id="submitbtn" onclick="window.open(\'questionnaire.html\')">重設</button>';
+		}
+
+		function getValues() {
+  		// Upload data or perform any other necessary actions
+  
+  		// Redirect to the appreciate website
+  		window.location.href = "Appreciate.html";
+  
+  		// Clear form information (optional)
+  		// document.getElementById("form").reset();
+		}
+
+		function disableinput() {
+			if (other.disabled == true) {
+				other.disabled = false;
+				other.value =  ("");
+			} else {
+				other.disabled = true;
+				other.value =  ("");
+			}
+		} 
+
+	</script>
+    </p>
+
+	<p id="submitbutton">
+	</p>
+    </form>
+    
+</div>
+<div id="footer">
+	<script src="footer.js"></script>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>

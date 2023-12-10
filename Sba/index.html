@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>主頁</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="index.js"></script>
+<style type="text/css">
+<!--
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+dialog{
+  border: none;
+  box-shadow: 0 2px 6px #ccc;
+  border-radius: 10px;
+  height: 50vw;
+  width: 50vw;
+}
+body {
+	font: 100% 細明體, 新細明體;
+	background: #FFFFFF;
+	margin: 0; /* 比較好的做法是將 Body 元素的邊界與欄位間隔調整為零，以處理不同的瀏覽器預設值 */
+	padding: 0;
+	text-align: center; /* 這樣會讓容器在 IE 5* 瀏覽器內置中對齊。然後，文字會在 #container 選取器中設定為靠左對齊預設值 */
+	color: #000000;
+}
+.event {
+	border: 1px solid black;
+	border-collapse: 
+	collapse;
+	width: 70%;
+}
+.oneColLiqCtrHdr #container {
+	width: 100%;  /* 這樣將會建立為 80% 瀏覽器寬度的容器 */
+	background: #FFFFFF;
+	margin: 0 auto; /* 自動邊界 (搭配寬度) 會讓頁面置中對齊 */
+	border: 0px solid #000000;
+	text-align: left; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
+}
+
+.oneColLiqCtrHdr #header {
+	background: #FFFFFF; 
+	padding: 0 10px 0 20px;  /* 這個欄位間隔符合下面顯示的 Div 中，元素的靠左對齊。如果在 #header 中使用影像而非文字，您可能會想要移除欄位間隔。 */
+    height: 10vw;
+}
+.oneColLiqCtrHdr #header h1 {
+	margin: 0; /* 將 #header Div 中最後一個元素的邊界調整為零可避免邊界收合 (Div 之間出現的空間，無法解釋)。如果 Div 的周圍具有邊框，這就不是必要動作，因為該項設定也會避免邊界收合 */
+	padding: 10px 0; /* 使用欄位間隔而非邊界便可讓元素遠離 Div 的邊緣 */
+}
+.schoollogo {
+    height: 10vw;
+    width: 10vw;
+}
+.button_box {
+	position: absolute;
+    top: 0vw; left: 15vw;
+	height: 8vw;
+	width: 40vw;
+}
+.button_box_btn {
+    height: 8vw;
+    width: 10vw;
+    float: left;
+}
+.button_box_fontsize {
+    position: absolute;
+    top: 5vw; right: 5vw;
+    height: 5vw;
+    width: 20vw;
+}
+.button_box_fontsize_btn {
+    height: 5vw;
+    width: 5vw;
+    float: right;
+}
+.oneColLiqCtrHdr #mainContent {
+	padding: 0 20px; /* 請記住，欄位間隔就是 Div 方塊內部的空間，而邊界就是 Div 方塊外部的空間 */
+	background: #FFFFFF;
+}
+.table_set_one {
+    border: none;
+	width: 80%;
+}
+.oneColLiqCtrHdr #footer { 
+	padding: 0 10px; /* 這個欄位間隔符合上面顯示的 Div 中，元素的靠左對齊。 */
+	background:#DDDDDD;
+	width: 100%;
+} 
+.oneColLiqCtrHdr #footer p {
+	margin: 0; /* 將頁尾中第一個元素的邊界調整為零可避免邊界收合的可能性 (Div 之間出現的空間) */
+	padding: 10px 0; /* 這個元素的欄位間隔將會建立空間，就如同邊界一樣，但是沒有邊界收合的問題 */
+}
+.gradient-custom {
+/* fallback for old browsers */
+background: #6a11cb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+@media screen and (max-device-width: 620px) {
+  /* For mobile phones: */
+  .oneColLiqCtrHdr #container, .oneColLiqCtrHdr #header, .oneColLiqCtrHdr #footer, .oneColLiqCtrHdr #mainContent {
+    width: 100%;
+  }
+  .button_box {
+	  width: 100%;
+  }
+  .event {
+	  width: 100%;
+  }
+  .event tr {
+	  height: 10vw;
+  }
+  .table_set_one {
+	  width: 100%;
+  }
+}
+-->
+</style>
+<audio id="myAudio">
+  <source src="source/Busy_City-TrackTribe.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+    function darkmode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="daymode()" class="button_box_fontsize_btn">Day Mode </button>';
+        document.querySelector('body').style.color = "#FFFFFF";
+        document.querySelector('body').style.background = "#000000";
+        document.getElementById('container').style.background = "#000000";
+        document.getElementById('mainContent').style.background = "#000000";
+        document.getElementById('header').style.background = "#000000";
+        document.querySelector(".mes-board").style.background = "#000000";
+        document.querySelector(".mes-board").style.borderColor = "white";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#808080"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function daymode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode </button>';
+        document.querySelector('body').style.color = "#000000";
+        document.querySelector('body').style.background = "#FFFFFF";
+        document.getElementById('container').style.background = "#FFFFFF";
+        document.getElementById('mainContent').style.background = "#FFFFFF";
+        document.getElementById('header').style.background = "#FFFFFF";
+        document.querySelector(".mes-board").style.background = "#FFFFFF";
+        document.querySelector(".mes-board").style.borderColor = "black";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#f0f0f0"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function increaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize + 2) + 'px';
+    }
+    function decreaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize - 2) + 'px';
+    }
+    
+    var x = document.getElementById("myAudio"); 
+    function playAudio() { 
+        x.play(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/pause.svg" width="20px" height="20px" onclick="pauseAudio()"></button>';
+    } 
+
+    function pauseAudio() { 
+        x.pause(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()"></button>';
+    } 
+</script>
+</head>
+
+<body class="oneColLiqCtrHdr">
+<div id="container">
+  <div id="header">
+<h1>
+    <div class="schoollogo"><img src="source/index\schoolLogo01.png" height="100%" width="100%"></div>
+    <div class="button_box">
+                <button class="button_box_btn">
+                    <a href="schoollife.html">
+                        <span style="font-size:2vw">學校活動</span>
+                        </a>
+                    </button>
+                <button class="button_box_btn">
+                    <a href="map.html" target="_self">
+                    <span style="font-size:2vw">舉辦地點</span></a>
+                    </button>
+                <button class="button_box_btn">
+                    <a href="questionnaire.html" target="_self">
+                        <span style="font-size:2vw">問卷</span>
+                        </a>
+                    </button>
+                <button class="button_box_btn">
+                    <a href="moreinfo.html" target="_self">
+                        <span style="font-size:2vw">延伸閱讀</span>
+                        </a>
+                    </button>
+        </div>
+    <div class="button_box_fontsize">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Decrease_font.svg" width="20px" height="20px" onclick="decreaseFontSize()">
+        </button>
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Increase_font.svg" width="20px" height="20px" onclick="increaseFontSize()">
+        </button>
+            <span id="modebutton">
+        <button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode
+            </button></span>
+            <span id="playmusic">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()">
+            </button></span>
+    </div>
+    </h1>
+  <!-- end #header --></div>
+
+  <div id="mainContent">
+<h1>ABC中學50周年校慶開放日</h1>
+    <video width="600" controls muted>
+  <source src="source/index/Introduction.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+<p>
+        <table class="event">
+        <tr>
+            <td colspan="3">開放日活動</td>
+        </tr>
+        <tr>
+            <td colspan="3">日期：30/10</td>
+        </tr>
+        <tr bgcolor="#00FFFF">
+            <td>時間</td><td>活動</td><td>地點</td>
+        </tr>
+        <tr>
+            <td>9.00-10.00</td><td>開幕禮</td><td>禮堂</td>
+        </tr>
+        <tr>
+            <td>11.00-11.30</td><td>資訊與通訊科技組講座</td><td>禮堂</td>
+        </tr>
+        <tr>
+            <td>14.00-15.30</td><td>學生表演</td><td> 一樓平台</td>
+        </tr>
+        <tr>
+            <td>16.00-16.30</td><td>制服團隊宣傳</td><td>禮堂</td>
+        </tr>
+        <tr>
+            <td>17.00</td><td>閉幕禮</td><td>禮堂</td>
+        </tr>
+        </table><br>
+        Add to Calenda<br>
+        <a target="_blank" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NXZqN2dqcHBobnNrODBlcm1sdGQ5Mmw4cW4gY2hhbnlpa2ExOTkwQG0&amp;tmsrc=chanyika1990%40gmail.com">
+            <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_zh-TW.gif"></a>
+    </p>
+        <table class="table_set_one">
+            全日活動
+            <!--First Row-->
+            <tr>
+                <td rowspan="2"><img src="source/index/Formula_Edge.png" height="200px">
+                    <img src="source/index/Formula_Edge2.jpg" height="200px" style="float: left;">
+                    </td>
+                <td>Jetracer 體驗營</td>
+            </tr>
+            <tr>
+                <td bgcolor="#40E0D0">2/F 電腦室</td>
+            </tr>
+            <!--Second Row-->
+            <tr>
+                <td rowspan="2"><img src="source/index/flightsimulator.jpg" height="200px">
+                    <img src="source/index/flightsimulator2.jpg" height="200px" style="float: left;">
+                </td>
+                <td>飛行模擬器教學</td>
+            </tr>
+            <tr>
+                <td bgcolor="#40E0D0">2/F Stem室</td>
+            </tr>
+            <tr>
+                <td rowspan="2"><img src="source/index/drawing.jpg" height="200px">
+                    <img src="source/index/drawing2.jpg" height="200px" style="float: left;">
+                    </td>
+                    <td>噴畫工作坊</td>
+                </tr>
+            <tr>
+                <td bgcolor="#40E0D0">G/F 多用途室
+                <br /><button id="show">按此報名</button>
+            </tr>
+        </table>
+    <!--register button-->
+
+<dialog id="infoModal">
+    <!--Close button-->
+    <form>
+        <button id="close" style="float:right;">Close</button>
+    <!--Header-->
+    <div style="text-align:center;">
+        <h3>噴畫工作坊報名</h3></div>
+    <!--Container-->
+        <label>登記名字: <input type="text" id="rname"></label><br>
+        <label>登記碼:   <input type="number" id="rcode" placeholder="4位數字" minlength="4" maxlength="4"></label>
+    <br>
+        <input type="button" id="rbtn" value="登記">
+    <p id="rinfo"></p>
+        </form>
+</dialog>
+<script>
+    var rcount = 0;
+    let btn=document.querySelector("#show");
+    let infoModal=document.querySelector("#infoModal");
+    btn.addEventListener("click", function(){
+        infoModal.showModal();
+    })
+    let close=document.querySelector("#close");
+    close.addEventListener("click", function(){
+        infoModal.close();
+        document.getElementById("form").reset();
+    })
+    let register=document.querySelector('#rbtn');
+    register.addEventListener("click", function(){
+        if (rname.value == "") {
+            window.alert("請輸入登記名字");
+        } else if(rcode.value == "") {
+            window.alert("請輸入登記碼");
+        } else if(rcode.value.length != 4) {
+            window.alert("登記碼長度必須為4");
+        } else {
+        rcount++;
+        document.getElementById("rinfo").innerHTML = 
+            "登記成功! 登記名字為" + rname.value + "<br>籌號為" + rcount + "<br>登記碼為" + rcode.value + '<br>請記下你的登記名字和登記碼作認證<br><div id="encode_text" style="display:none;"></div>';
+        let encoded = btoa(encodeURIComponent(document.getElementById("rinfo").innerHTML));
+        document.getElementById("encode_text").innerHTML += encoded;
+        document.getElementById("rinfo").innerHTML += '<button id="download">下載登記資料</button>';
+
+        let downloadBtn = document.getElementById("download");
+        downloadBtn.addEventListener("click", function() {
+            let rinfo = document.getElementById("rinfo");
+            let rinfoText = rinfo.cloneNode(true);
+            rinfoText.removeChild(rinfoText.lastChild); // Remove the download button from the cloned element
+            let encodedText = document.getElementById("encode_text").innerText;
+            let textToSave = rinfoText.innerText + encodedText;
+            let textToSaveAsBlob = new Blob([textToSave], {type: "text/plain"});
+            let textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+            let fileName = "registration_info.txt";
+
+            let downloadLink = document.createElement("a");
+            downloadLink.download = fileName;
+            downloadLink.href = textToSaveAsURL;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+        });
+    }
+    })
+</script>
+<!--发送留言-->
+<style>
+
+      .mes-board{
+            margin: 25px 0;
+            padding: 10px;
+            background : rgb(255, 255, 255);
+            border: 1px solid black;
+      }
+      .mes-board li{
+            padding: 0.7em;
+            list-style: none;
+      }
+      .mes-board li + li {
+             border-top: 1px dashed #ffffff;
+      }
+      .mes-board h4{
+            display: inline;
+            margin-right: 10px;
+            font-weight: 400px;
+      }
+      .mes-board small{
+            color: #999999;
+            float: right;
+      }
+      .mes-board div{
+            padding: 0.4em 0;
+            text-align: justify;
+            font-size: 12px;
+            margin-top: 10px;
+      }
+</style>
+        <fieldset>
+            <legend>討論區</legend>
+       <div class="form-group">
+             <label for="userName">用户姓名：</label>
+             <input type="text" class="form-control" id="userName">
+       </div>
+
+       <div class="form-group">
+        <label for="userName">留言内容：</label>
+       <textarea class="form-control" rows="3" id="content" maxlength="600"></textarea>
+
+       <button class="btn btn-default" id="sendBtn">提交</button>
+       &nbsp;&nbsp;&nbsp;
+
+       <span id="msg" style="color: red;"></span>
+      
+
+       <!--留言列表-->
+
+       <div id="msgBoard" class="mes-board">
+            <li>
+                 <h4>admin</h4>
+                 <small>2021-04-22  15:34:45</small>
+                 <div>
+                    歡迎提出意見!
+                 </div>
+            </li>
+       </div>
+    </fieldset>
+<!--
+       留言板
+             实现思路：
+               1.获取用户姓名与留言内容
+               2.判断值是否为空，如果为空，则提示信息
+               3.绑定提交按钮的点击事件
+               4.获取姓名，留言内容以及当前系统时间，拼接成指定的html标签
+               5.将标签追加到留言表中
+-->
+  <script>
+        // 发送留言
+        $("#sendBtn").click(function(){
+                //获取用户姓名
+                var  userName = $("#userName").val();
+                //判断非空
+                if(userName == null || userName.trim() == ""){
+                      $("#msg").html("用户姓名不能为空！");
+                      return;
+                }
+                //获取留言内容
+                var  content= $("#content").val();
+
+                //判断非空
+
+                if(content.trim() == ""){
+                         $("#msg").html("请输入留言内容！");
+                         return;
+                }  
+
+            //留言数据
+
+            var  msg = "<li><h4>"+userName+"</h4><small>"+formatDate()+"</small>";
+                msg +="<div>"+content+"</div></li>";
+
+            //将留言内容追加到留言板中
+
+            $("#msgBoard").prepend(msg);
+            
+
+            //清空内容与提示信息
+
+            $("#userName").val("");
+            $("#content").val("");
+            $("msg").val("");
+                
+        });
+        
+        //格式化时间
+        function formatDate(){
+                  //获取系统当前时间
+                  var  date = new  Date();
+                  //获取年月日时分秒
+                  var str = date.getFullYear()+"-"+(parseInt(date.getMonth())+1)+"-"+date.getDate();
+                  str +" "+ date.getHours +":"+ date.getMinutes()+":"+date.getSeconds();
+
+                  return  str;
+        }
+  </script>
+<!-- end #mainContent --></div>
+<div id="footer">
+    <script src="footer.js"></script>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>

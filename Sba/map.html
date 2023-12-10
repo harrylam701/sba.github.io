@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>地圖</title>
+<style type="text/css">
+  <!--
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  body {
+    font: 100% 細明體, 新細明體;
+    background: #FFFFFF;
+    margin: 0; /* 比較好的做法是將 Body 元素的邊界與欄位間隔調整為零，以處理不同的瀏覽器預設值 */
+    padding: 0;
+    text-align: center; /* 這樣會讓容器在 IE 5* 瀏覽器內置中對齊。然後，文字會在 #container 選取器中設定為靠左對齊預設值 */
+    color: #000000;
+  }
+  .oneColLiqCtrHdr #container {
+    width: 100%;  /* 這樣將會建立為 80% 瀏覽器寬度的容器 */
+    background: #FFFFFF;
+    margin: 0 auto; /* 自動邊界 (搭配寬度) 會讓頁面置中對齊 */
+    border: 0px solid #000000;
+    text-align: left; /* 這樣做會覆寫 Body 元素上的 text-align: center。 */
+  }
+  .oneColLiqCtrHdr #header {
+    background: #FFFFFF; 
+    padding: 0 10px 0 20px;  /* 這個欄位間隔符合下面顯示的 Div 中，元素的靠左對齊。如果在 #header 中使用影像而非文字，您可能會想要移除欄位間隔。 */
+      height: 4vw;
+  }
+  .oneColLiqCtrHdr #header h1 {
+    margin: 0; /* 將 #header Div 中最後一個元素的邊界調整為零可避免邊界收合 (Div 之間出現的空間，無法解釋)。如果 Div 的周圍具有邊框，這就不是必要動作，因為該項設定也會避免邊界收合 */
+    padding: 10px 0; /* 使用欄位間隔而非邊界便可讓元素遠離 Div 的邊緣 */
+  }
+  .button_box_fontsize {
+    position: absolute;
+    top: 5vw; right: 5vw;
+    height: 5vw;
+    width: 20vw;
+}
+.button_box_fontsize_btn {
+    height: 5vw;
+    width: 5vw;
+    float: right;
+}
+  .oneColLiqCtrHdr #mainContent {
+    padding: 0 20px; /* 請記住，欄位間隔就是 Div 方塊內部的空間，而邊界就是 Div 方塊外部的空間 */
+    background: #FFFFFF;
+  }
+  .table_set_one {
+      border: none;
+    width: 80%;
+  }
+  .oneColLiqCtrHdr #footer { 
+    padding: 0 10px; /* 這個欄位間隔符合上面顯示的 Div 中，元素的靠左對齊。 */
+    background:#DDDDDD;
+    width: 100%;
+  } 
+  .oneColLiqCtrHdr #footer p {
+    margin: 0; /* 將頁尾中第一個元素的邊界調整為零可避免邊界收合的可能性 (Div 之間出現的空間) */
+    padding: 10px 0; /* 這個元素的欄位間隔將會建立空間，就如同邊界一樣，但是沒有邊界收合的問題 */
+  }
+  .gradient-custom {
+  /* fallback for old browsers */
+  background: #6a11cb;
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+  }
+  @media screen and (max-device-width: 620px) {
+    /* For mobile phones: */
+    .oneColLiqCtrHdr #container, .oneColLiqCtrHdr #header, .oneColLiqCtrHdr #footer, .oneColLiqCtrHdr #mainContent {
+      width: 100%;
+    }
+  }
+  -->
+  </style>
+  <audio id="myAudio">
+  <source src="source/Busy_City-TrackTribe.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+  <script>
+    function darkmode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="daymode()" class="button_box_fontsize_btn">Day Mode </button>';
+        document.querySelector('body').style.color = "#FFFFFF";
+        document.querySelector('body').style.background = "#000000";
+        document.getElementById('container').style.background = "#000000";
+        document.getElementById('mainContent').style.background = "#000000";
+        document.getElementById('header').style.background = "#000000";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#808080"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function daymode() {
+        document.getElementById('modebutton').innerHTML = '<button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode </button>';
+        document.querySelector('body').style.color = "#000000";
+        document.querySelector('body').style.background = "#FFFFFF";
+        document.getElementById('container').style.background = "#FFFFFF";
+        document.getElementById('mainContent').style.background = "#FFFFFF";
+        document.getElementById('header').style.background = "#FFFFFF";
+        document.getElementById('footer').style.color ="#000000"
+        var buttons = document.getElementsByTagName("button");
+      var color = "#f0f0f0"; // Change this to the desired color
+
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor = color;
+      }
+    }
+    function increaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize + 2) + 'px';
+    }
+    function decreaseFontSize() {
+        var body = document.querySelector('body');
+        var computedFontSize = window.getComputedStyle(body).fontSize;
+        var currentFontSize = parseFloat(computedFontSize);
+
+        body.style.fontSize = (currentFontSize - 2) + 'px';
+    }
+    var x = document.getElementById("myAudio"); 
+    function playAudio() { 
+        x.play(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/pause.svg" width="20px" height="20px" onclick="pauseAudio()" alt="暫停音樂"></button>';
+    } 
+
+    function pauseAudio() { 
+        x.pause(); 
+        document.getElementById("playmusic").innerHTML = '<button class="button_box_fontsize_btn"><img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()" alt="播放音樂"></button>';
+    } 
+</script>
+</head>
+
+<body class="oneColLiqCtrHdr">
+
+<div id="container">
+  <div id="header">
+<h1>地圖
+  <div class="button_box_fontsize">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Decrease_font.svg" width="20px" height="20px" onclick="decreaseFontSize()" alt="縮小字體" >
+        </button>
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/Increase_font.svg" width="20px" height="20px" onclick="increaseFontSize()" alt="放大字體">
+        </button>
+            <span id="modebutton">
+        <button onclick="darkmode()" class="button_box_fontsize_btn">Dark Mode
+            </button></span>
+            <span id="playmusic">
+        <button class="button_box_fontsize_btn">
+            <img src="source/svg/play.svg" width="20px" height="20px" onclick="playAudio()" alt="播放音樂">
+            </button></span>
+    </div>
+    </h1>
+  <!-- end #header --></div>
+  <div id="mainContent">
+<h1><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.426294287216!2d113.96286307572213!3d22.375281340172574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403fb4ff8152879%3A0x2dafc14240083b72!2z5p2x6I-v5LiJ6Zmi6L6b5Lql5bm057i955CG5Lit5a24!5e0!3m2!1szh-TW!2shk!4v1684285589415!5m2!1szh-TW!2shk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></h1>
+	<!-- end #mainContent --></div>
+<div id="footer">
+	<script src="footer.js"></script>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+</body>
+</html>
